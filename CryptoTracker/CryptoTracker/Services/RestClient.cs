@@ -11,7 +11,7 @@ namespace CryptoTracker.Services
     public class RestClient<T>
     {
         private const string MainWebServiceUrl = "https://localhost:7055/";
-        private const string LoginWebServiceUrl = "https://localhost:7055/api/Users";
+        private const string LoginWebServiceUrl = "http://127.0.0.1:7055/api/Users";
 
         public async Task<bool> Checklogin(string email, string password)
         {

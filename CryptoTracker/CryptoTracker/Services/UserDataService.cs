@@ -12,13 +12,14 @@ namespace CryptoTracker.Services
     public class UserDataService : IUserDataService
     {
         private HttpClient _client;
-        private const string LoginWebServiceUrl = "https://localhost:7055/api/Users";
+        
         public UserDataService(HttpClient client)
         {
             _client = client;
         }
         public async Task AddUser(Users newUser)
         {
+            var LoginWebServiceUrl = "https://localhost:7055/api/Users";
 
             var stringContent = JsonConvert.SerializeObject(newUser);
 
@@ -27,13 +28,9 @@ namespace CryptoTracker.Services
             var response = await _client.PostAsync(LoginWebServiceUrl, content);
         }
 
-        public Task DeleteUser(int userId)
+        public async Task DeleteUser(int userId)
         {
-            var stringContent = JsonConvert.SerializeObject(newUser);
-
-            var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
-
-            var response = await _client.PostAsync(LoginWebServiceUrl, content);
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Users>> GetAllUsers()
