@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism1:PrismApplication  xmlns:prism1="http://prismlibrary.com" 
+                          xmlns:prism="http://xamarin.com/schemas/2014/forms" 
+                          xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          x:Class="CryptoTracker.App">
+    <Application.Resources>
+
+    </Application.Resources>
+</prism1:PrismApplication>
