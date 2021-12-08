@@ -12,6 +12,7 @@ namespace CryptoTracker.Services
     public class UserDataService : IUserDataService
     {
         private HttpClient _client;
+        private const string LoginWebServiceUrl = "https://192.168.18.5//api/Users";
         
         public UserDataService(HttpClient client)
         {
@@ -19,34 +20,33 @@ namespace CryptoTracker.Services
         }
         public async Task AddUser(Users newUser)
         {
-            var LoginWebServiceUrl = "https://localhost:7055/api/Users";
 
             var stringContent = JsonConvert.SerializeObject(newUser);
 
             var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
 
-            var response = await _client.PostAsync(LoginWebServiceUrl, content);
+            await _client.PostAsync(LoginWebServiceUrl, content);
         }
 
         public async Task DeleteUser(int userId)
         {
-            throw new NotImplementedException();
+            await _client.DeleteAsync($"https://192.168.18.5//api/Users{userId}");
         }
 
         public async Task<IEnumerable<Users>> GetAllUsers()
         {
-            throw new NotImplementedException();
-            //return await _client.GetAsync<Users[]>("api/Users");
+            string usersString = await _client.GetStringAsync(LoginWebServiceUrl);
+            var users = JsonConvert.DeserializeObject<IEnumerable<Users>>(usersString);
+            return users;
         }
 
-        public Task UpdateUser(Users user, int id)
+        public async Task UpdateUser(Users user, int id)
         {
-            throw new NotImplementedException();
-        }
+            var stringContent = JsonConvert.SerializeObject(user);
 
-        Task<Users> IUserDataService.GetAllUsers()
-        {
-            throw new NotImplementedException();
+            var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
+
+            await _client.PutAsync($"https://192.168.18.5//api/Users{id}", content);
         }
     }
 }

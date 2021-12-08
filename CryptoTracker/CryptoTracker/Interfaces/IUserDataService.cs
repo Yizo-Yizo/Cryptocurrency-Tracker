@@ -11,6 +11,6 @@ namespace CryptoTracker.Interfaces
         Task AddUser(Users newUser);
         Task UpdateUser(Users user, int id);
         Task DeleteUser(int userId);
-        Task<Users> GetAllUsers();
+        Task<IEnumerable<Users>> GetAllUsers();
     }
 }
