@@ -12,7 +12,7 @@ namespace CryptoTracker.Services
     public class UserDataService : IUserDataService
     {
         private HttpClient _client;
-        private const string LoginWebServiceUrl = "https://169.254.80.80:7250/api/AppUsers";
+        private const string LoginWebServiceUrl = "https://10.0.2.2:7250/api/AppUsers";
         
         public UserDataService(HttpClient client)
         {
@@ -45,7 +45,7 @@ namespace CryptoTracker.Services
 
         public async Task DeleteUser(int userId)
         {
-            await _client.DeleteAsync($"https://192.168.18.5:7250/api/AppUsers{userId}");
+            await _client.DeleteAsync($"https://10.0.2.2:7250/api/AppUsers{userId}");
         }
 
         public async Task<IEnumerable<AppUser>> GetAllUsers()
@@ -61,7 +61,7 @@ namespace CryptoTracker.Services
 
             var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
 
-            await _client.PutAsync($"https://192.168.18.5:7250/api/AppUsers{id}", content);
+            await _client.PutAsync($"https://10.0.2.2:7250/api/AppUsers{id}", content);
         }
     }
 }

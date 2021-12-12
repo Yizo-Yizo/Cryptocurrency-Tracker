@@ -83,7 +83,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResourceAnalysisConfig Include="Resources\network_security_config.xml">
+      <SubType>Designer</SubType>
+    </AndroidResourceAnalysisConfig>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CryptoTracker\CryptoTracker.csproj">
       <Project>{7CAD7BD4-0E66-474B-AFD6-192F5F9CD9ED}</Project>

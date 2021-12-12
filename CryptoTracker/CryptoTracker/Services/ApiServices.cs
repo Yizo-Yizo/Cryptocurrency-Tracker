@@ -13,7 +13,7 @@ namespace CryptoTracker.Services
     {
         //private const string MainWebServiceUrl = "https://localhost:7055/";
         //private const string LoginWebServiceUrl = "http://localhost/api/Users";
-        private const string LoginWebServiceUrl = "https://169.254.80.80:7250/api/AppUsers";
+        private const string LoginWebServiceUrl = "https://10.0.2.2:7250/api/AppUsers";
 
         public async Task<bool> Register(string name, string surname, string email, string contactNumber, string password, string confirmPassword)
         {
