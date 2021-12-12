@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTrackerWebApi", "CryptoTrackerWebApi\CryptoTrackerWebApi.csproj", "{918C1788-0E38-445E-B383-04C9F7EA8BC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoWebApi", "CryptoWebApi\CryptoWebApi.csproj", "{E9DDF6EE-B300-4333-AE73-57914167EC15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{918C1788-0E38-445E-B383-04C9F7EA8BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{918C1788-0E38-445E-B383-04C9F7EA8BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{918C1788-0E38-445E-B383-04C9F7EA8BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{918C1788-0E38-445E-B383-04C9F7EA8BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9DDF6EE-B300-4333-AE73-57914167EC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9DDF6EE-B300-4333-AE73-57914167EC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9DDF6EE-B300-4333-AE73-57914167EC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9DDF6EE-B300-4333-AE73-57914167EC15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9032F3C8-EC92-4389-A248-AC21BD8DDF6D}
+		SolutionGuid = {C5E21515-D6F9-48BA-BE74-CDF31E355C78}
 	EndGlobalSection
 EndGlobal

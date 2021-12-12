@@ -1,25 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:viewmodel="clr-namespace:CryptoTracker.ViewModel" x:DataType="viewmodel:SignUpPageViewModel"
+             xmlns:viewmodel="clr-namespace:CryptoTracker.ViewModel" 
+             x:DataType="viewmodel:SignUpPageViewModel"
              x:Class="CryptoTracker.Views.SignUpPage"
              BackgroundImageSource="BackgroudPic.jpg">
+
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand">
             <Label Text="First Name" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry  Placeholder="Enter First Name" Text="{Binding CurrentUser.Name}" TextColor="White" />
+            <Entry  Placeholder="Enter First Name" Text="{Binding Name}" TextColor="White" />
 
             <Label Text="Last Name" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry  Placeholder="Enter Last Name" Text="{Binding CurrentUser.Surname}" TextColor="White" />
+            <Entry  Placeholder="Enter Last Name" Text="{Binding Surname}" TextColor="White" />
 
             <Label Text="Email" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry  Placeholder="Enter Email" Text="{Binding CurrentUser.Email}" TextColor="White" />
+            <Entry  Placeholder="Enter Email" Text="{Binding Email}" TextColor="White" />
 
             <Label Text="Phone number" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry  Placeholder="Phone number" Text="{Binding CurrentUser.Email}" TextColor="White" />
+            <Entry  Placeholder="Phone number" Text="{Binding Email}" TextColor="White" />
 
             <Label Text="Password" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry Placeholder="Enter Password" Text="{Binding CurrentUser.Password}" IsPassword="True" TextColor="White" />
+            <Entry Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True" TextColor="White" />
+
+            <Label Text="Confirm Password" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
+            <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" TextColor="White" />
 
             <Button Text="Sign Up" Command="{Binding SignUpCommand}" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  

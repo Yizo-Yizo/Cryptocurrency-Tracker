@@ -5,53 +5,53 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CryptoTrackerWebApi.Model;
+using CryptoWebApi.Model;
 
-namespace CryptoTrackerWebApi.Controllers
+namespace CryptoWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AppUsersController : ControllerBase
     {
-        private readonly CryptoTrackerContext _context;
+        private readonly UserContext _context;
 
-        public UsersController(CryptoTrackerContext context)
+        public AppUsersController(UserContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/AppUsers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetAppUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.AppUsers.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/AppUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        public async Task<ActionResult<AppUser>> GetAppUser(int? id)
         {
-            var users = await _context.Users.FindAsync(id);
+            var appUser = await _context.AppUsers.FindAsync(id);
 
-            if (users == null)
+            if (appUser == null)
             {
                 return NotFound();
             }
 
-            return users;
+            return appUser;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/AppUsers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> PutAppUser(int? id, AppUser appUser)
         {
-            if (id != users.Id)
+            if (id != appUser.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            _context.Entry(appUser).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace CryptoTrackerWebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!AppUserExists(id))
                 {
                     return NotFound();
                 }
@@ -72,36 +72,36 @@ namespace CryptoTrackerWebApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/AppUsers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<AppUser>> PostAppUser(AppUser appUser)
         {
-            _context.Users.Add(users);
+            _context.AppUsers.Add(appUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUsers), new { id = users.Id }, users);
+            return CreatedAtAction(nameof(GetAppUser), new { id = appUser.Id }, appUser);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/AppUsers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers(int id)
+        public async Task<IActionResult> DeleteAppUser(int? id)
         {
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            var appUser = await _context.AppUsers.FindAsync(id);
+            if (appUser == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
+            _context.AppUsers.Remove(appUser);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool UsersExists(int id)
+        private bool AppUserExists(int? id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.AppUsers.Any(e => e.Id == id);
         }
     }
 }

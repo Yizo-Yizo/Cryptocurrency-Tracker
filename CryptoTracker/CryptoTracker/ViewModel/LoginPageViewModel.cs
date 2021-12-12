@@ -13,13 +13,13 @@ namespace CryptoTracker.ViewModel
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly IUserDataService _userDataService;
-        private Users _user;
+        private AppUser _user;
         public LoginPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
-            CurrentUser = new Users();
+            CurrentUser = new AppUser();
         }
 
-        public Users CurrentUser
+        public AppUser CurrentUser
         {
             get { return _user; }
             set { SetProperty(ref _user, value); }
@@ -31,8 +31,8 @@ namespace CryptoTracker.ViewModel
 
         public async void ExecuteLoginCommand()
         {
-            await _userDataService.AddUser(CurrentUser);
-            LoginService service = new LoginService();
+            //await _userDataService.AddUser(CurrentUser);
+            /*LoginService service = new LoginService();
             var getLoginDetails = await service.CheckLoginifExists(CurrentUser.Email, CurrentUser.Password);
 
             if (getLoginDetails)
@@ -48,7 +48,7 @@ namespace CryptoTracker.ViewModel
                 await PageDialogService.DisplayAlertAsync("Login failed", "Username or Password is incorrect", "Okay", "Cancel");
             }
 
-            await NavigationService.NavigateAsync("CryptoPriceLIst");
+            await NavigationService.NavigateAsync("CryptoPriceLIst");*/
         }
 
         private DelegateCommand _registerCommand;

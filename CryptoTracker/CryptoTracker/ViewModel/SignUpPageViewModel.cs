@@ -1,6 +1,7 @@
 ﻿using CryptoTracker.Interfaces;
 using CryptoTracker.Models;
 using CryptoTracker.ServiceHandler;
+using CryptoTracker.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
@@ -13,17 +14,20 @@ namespace CryptoTracker.ViewModel
     public class SignUpPageViewModel : ViewModelBase
     {
         private IUserDataService _userDataService;
-        private Users _user;
+        //private Users _user;
+
+        //ApiServices service = new ApiServices();
         public SignUpPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IUserDataService userDataService) : base(navigationService, pageDialogService)
         {
             _userDataService = userDataService;
         }
 
-        public Users CurrentUser
-        {
-            get { return _user; }
-            set { SetProperty(ref _user, value); }
-        }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string ContactNumber { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
 
         private DelegateCommand _signUpCommand;
 
@@ -31,23 +35,21 @@ namespace CryptoTracker.ViewModel
             _signUpCommand ?? (_signUpCommand = new DelegateCommand((ExecuteSignUpCommand)));
         public async void ExecuteSignUpCommand()
         {
-            await _userDataService.AddUser(CurrentUser);
-            LoginService service = new LoginService();
-            var getLoginDetails = await service.CheckLoginifExists(CurrentUser.Email, CurrentUser.Password);
+            //await _userDataService.AddUser(CurrentUser);
 
-            if (CurrentUser.Name == null || CurrentUser.Email == null || CurrentUser.ContactNumber == null || CurrentUser.Password == null)
+            var getLoginDetails = await _userDataService.Register(Name, Surname, Email, ContactNumber, Password, ConfirmPassword);
+
+            if (getLoginDetails)
             {
-                await PageDialogService.DisplayAlertAsync("Registration failed", "Enter all feilds", "Okay", "Cancel");
-            }
-            else if (getLoginDetails)
-            {
-                await PageDialogService.DisplayAlertAsync("Registration failed", "Already have an account", "Okay", "Cancel");
+                await PageDialogService.DisplayAlertAsync("Registration Successful", "Your registration has been successful", "Okay", "Cancel");
+                await NavigationService.NavigateAsync("LoginPage");
             }
             else
             {
-                await PageDialogService.DisplayAlertAsync("Registration successful", "Enjoy", "Okay", "Cancel");
+                await PageDialogService.DisplayAlertAsync("Registration unsuccessful", "Your registration was unsuccessful", "Okay", "Cancel"); 
                 await NavigationService.NavigateAsync("LoginPage");
             }
+                
         }
     }
 }

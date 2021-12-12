@@ -8,9 +8,10 @@ namespace CryptoTracker.Interfaces
 {
     public interface IUserDataService
     {
-        Task AddUser(Users newUser);
-        Task UpdateUser(Users user, int id);
+        //Task AddUser(Users newUser);
+        Task<bool> Register(string name, string surname, string email, string contactNumber, string password, string confirmPassword);
+        Task UpdateUser(AppUser user, int id);
         Task DeleteUser(int userId);
-        Task<IEnumerable<Users>> GetAllUsers();
+        Task<IEnumerable<AppUser>> GetAllUsers();
     }
 }
