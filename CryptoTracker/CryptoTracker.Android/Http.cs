@@ -15,8 +15,22 @@ namespace CryptoTracker.Droid
 {
     public class Http
     {
-        private HttpClient _httpClient;
-        public HttpClient HttplicentAccount
+        //private HttpClient _httpClient;
+        
+        //Bypass the certificate security check
+        public HttpClientHandler GetInsecureHandler()
+        {
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                if (cert.Issuer.Equals("CN=localhost"))
+                    return true;
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            };
+            return handler;
+        }
+
+        /*public HttpClient HttplicentAccount
         {
             get
             {
@@ -40,6 +54,7 @@ namespace CryptoTracker.Droid
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Authorization", "YOUR_TOKEN");
                 return _httpClient;
             }
-        }
+        }*/
     }
+
 }
