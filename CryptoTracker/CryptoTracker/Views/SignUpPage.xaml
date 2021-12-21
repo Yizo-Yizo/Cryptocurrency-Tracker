@@ -18,7 +18,7 @@
             <Entry  Placeholder="Enter Email" Text="{Binding Email}" TextColor="White" />
 
             <Label Text="Phone number" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
-            <Entry  Placeholder="Phone number" Text="{Binding Email}" TextColor="White" />
+            <Entry  Placeholder="Phone number" Text="{Binding ContactNumber}" TextColor="White" />
 
             <Label Text="Password" FontSize="Medium" FontAttributes="Bold" TextColor="White" />
             <Entry Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True" TextColor="White" />

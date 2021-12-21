@@ -1,10 +1,10 @@
 using CryptoWebApi.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddDbContext<UserContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CryptoTrackerDB"),
                                                                 sqlServerOptionsAction: sqlOptions =>

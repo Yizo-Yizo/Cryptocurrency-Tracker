@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,14 +15,19 @@ namespace CryptoTracker.Services
         private HttpClient _client;
         private const string LoginWebServiceUrl = "https://10.0.2.2:7250/api/AppUsers";
         
-        public UserDataService(HttpClient client)
+        public UserDataService(HttpClientHandler handler)
         {
-            _client = client;
+            // Baypass security certificate
+            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            _client = new HttpClient(handler);
         }
 
         public async Task<bool> Register(string name, string surname, string email, string contactNumber, string password, string confirmPassword)
         {
-            var httpClient = new HttpClient();
+            // Baypass security certificate
+            /*HttpClientHandler handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            var httpClient = new HttpClient(handler);*/
 
             var credentials = new AppUser
             {
@@ -35,9 +41,11 @@ namespace CryptoTracker.Services
 
             var stringContent = JsonConvert.SerializeObject(credentials);
 
-            var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
+            var content = new StringContent(stringContent);
 
-            var response = await httpClient.PostAsync(LoginWebServiceUrl, content);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await _client.PostAsync(LoginWebServiceUrl, content);
 
             return response.IsSuccessStatusCode;
         }
