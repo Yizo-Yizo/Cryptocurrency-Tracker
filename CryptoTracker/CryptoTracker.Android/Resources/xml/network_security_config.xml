@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<network-security-config>
+    <!-- https://go.microsoft.com/fwlink/?linkid=2124038
+    <issue id="HardcodedText" severity="error">
+        <ignore path="Resources\layout\content_main.xml" />
+    </issue>
+    -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
+
+</network-security-config>
