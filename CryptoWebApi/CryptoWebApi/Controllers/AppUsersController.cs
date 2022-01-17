@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +13,9 @@ namespace CryptoWebApi.Controllers
     [ApiController]
     public class AppUsersController : ControllerBase
     {
-        private readonly UserContext _context;
+        private readonly AppUserContext _context;
 
-        public AppUsersController(UserContext context)
+        public AppUsersController(AppUserContext context)
         {
             _context = context;
         }

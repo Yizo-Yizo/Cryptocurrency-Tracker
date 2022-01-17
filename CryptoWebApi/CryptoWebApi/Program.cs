@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddDbContext<UserContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CryptoTrackerDB"),
+builder.Services.AddDbContext<AppUserContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CryptoTrackerDB"),
                                                                 sqlServerOptionsAction: sqlOptions =>
                                                                 {
                                                                     sqlOptions.EnableRetryOnFailure();

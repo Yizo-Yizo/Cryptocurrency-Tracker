@@ -41,9 +41,7 @@ namespace CryptoTracker.Services
 
             var stringContent = JsonConvert.SerializeObject(credentials);
 
-            var content = new StringContent(stringContent);
-
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var content = new StringContent(stringContent, Encoding.UTF8, "application/json");
 
             var response = await _client.PostAsync(LoginWebServiceUrl, content);
 
